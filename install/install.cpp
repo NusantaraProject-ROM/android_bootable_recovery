@@ -205,7 +205,7 @@ bool CheckPackageMetadata(const std::map<std::string, std::string>& metadata, Ot
   // We allow the package to carry multiple product names split by ",";
   // e.g. pre-device=device1,device2,device3 ... We will fail the
   // verification if the device's name doesn't match any of these carried names.
-  auto device = android::base::GetProperty("ro.product.device", "");
+  auto device = android::base::GetProperty("ro.build.product", "");
   auto pkg_device = get_value(metadata, "pre-device");
   bool product_name_match = false;
   for (const auto& name : android::base::Split(pkg_device, ",")) {
